@@ -1,14 +1,29 @@
 <template>
   <div id="app">
-    <span class="text">ABCDEFG</span>
     <router-view/>
   </div>
 </template>
-
-<style scoped>
-.text{
-  font-family: 'Days one';
-  font-size: 20px;
-  color: yellow;
+<script>
+export default {
+  name: 'App',
+  created() {},
+  mounted() {},
+  methods: {}
 }
+document.addEventListener('DOMContentLoaded', () => {
+  const html = document.querySelector('html')
+  let fontSize = window.innerWidth / 10
+  fontSize = fontSize > 50 ? 50 : fontSize
+  html.style.fontSize = fontSize + 'px'
+})
+</script>
+
+
+<style lang="scss" scoped>
+  @import './assets/styles/global';
+  #app{
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+  }
 </style>
