@@ -16,11 +16,11 @@ document.addEventListener('DOMContentLoaded', () => {
   fontSize = fontSize > 50 ? 50 : fontSize
   html.style.fontSize = fontSize + 'px'
 })
-</script>
+</script>``
 
 
 <style lang="scss" scoped>
-  @import './assets/styles/global';
+  // @import './assets/styles/global';
   #app{
     width: 100%;
     height: 100%;

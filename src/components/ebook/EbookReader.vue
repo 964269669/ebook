@@ -1,10 +1,12 @@
 <template>
   <div class="ebook-reader">
-    <div class="div">你好</div>
+    <div id="read" @touchstart="touchStart">哈哈</div>
   </div>
 </template>
 
 <script>
+import { mapGetters} from 'vuex'
+import Epub from 'epubjs'
 export default {
   name: 'EbookReader',
   components: {},
@@ -13,15 +15,34 @@ export default {
 
     }
   },
+  computed: {
+    ...mapGetters(['fileName'])
+  },
   created() {
   },
   mounted() {
-    // const baseUrl = 'http://192.168.43.99:9001/epub/'
-    // // 2017_Book_InterdisciplinaryPerspectivesO
+    // const baseUrl = 'http://192.168.137.167:9001/epub/'
+    // 2017_Book_InterdisciplinaryPerspectivesO
     // const fileName = this.$route.params.fileName.split('|').join('/')
-    // console.log(`${baseUrl}${fileName}`)
+    // this.$store.dispatch('setFileName', fileName).then(() => {
+    //   // this.initEpub()
+    // })
   },
   methods: {
+    initEpub() {
+      const baseUrl = 'http://192.168.137.167:9001/epub/' + this.fileName + '.epub'
+      this.book = new Epub(baseUrl)
+      this.rendition = this.book.renderTo('read', {
+        width: innerWidth,
+        height: innerHeight,
+        method: 'default'
+      })
+      this.rendition.display()
+      console.log(this.book) 
+    },
+    touchStart(e) {
+      console.log(e)
+    }
   }
 }
 </script>
